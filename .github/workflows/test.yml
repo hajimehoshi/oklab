@@ -1,0 +1,30 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        go: ['1.18.x', '1.19.x', '1.20.x', '1.21.x']
+    name: Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: go vet
+        run: |
+          go vet ./...
+
+      - name: go test (Linux)
+        run: |
+          go test -shuffle=on -v ./...
