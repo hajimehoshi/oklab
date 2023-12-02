@@ -10,7 +10,7 @@ import (
 	"github.com/hajimehoshi/oklab"
 )
 
-func TestPresision(t *testing.T) {
+func TestPrecision(t *testing.T) {
 	const num = 17
 
 	rgbs := make([]color.RGBA, 0, num*num*num)
