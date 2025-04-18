@@ -12,6 +12,7 @@ import (
 
 var _ color.Color = Oklab{}
 
+// Oklab is a color in the Oklab color space.
 type Oklab struct {
 	L     float64
 	A     float64
@@ -19,6 +20,7 @@ type Oklab struct {
 	Alpha float64
 }
 
+// RGBA implements color.Color.
 func (c Oklab) RGBA() (uint32, uint32, uint32, uint32) {
 	// https://bottosson.github.io/posts/oklab/#converting-from-linear-srgb-to-oklab
 
@@ -87,6 +89,7 @@ func (c Oklab) oklch() Oklch {
 
 var _ color.Color = Oklch{}
 
+// Oklch is a color in the Oklch color space.
 type Oklch struct {
 	H     float64
 	C     float64
@@ -94,6 +97,7 @@ type Oklch struct {
 	Alpha float64
 }
 
+// RGBA implements color.Color.
 func (c Oklch) RGBA() (uint32, uint32, uint32, uint32) {
 	return c.oklab().RGBA()
 }
